@@ -1,0 +1,16 @@
+.todo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--colorBG-light);
+  padding: 1em 2em;
+  font-size: 1.2em;
+  max-width: 1000px;
+  margin: 0.5em 0;
+}
+
+.todo.done {
+  text-decoration: line-through;
+  opacity: 0.7;
+  font-style: italic;
+}
