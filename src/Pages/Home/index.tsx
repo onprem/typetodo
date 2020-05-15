@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import TodoComp, { Todo } from "../../Components/Todo";
+import SingleTodo from "../../Components/SingleTodo";
+import { Todo } from "../../types";
 import styles from "./home.module.css";
 
 export const Home: React.FC = () => {
@@ -28,13 +29,17 @@ export const Home: React.FC = () => {
     );
   };
 
+  const deleteTodo = (todo: Todo): void => {
+    setTodos((dos) => dos.filter((t) => t.id !== todo.id));
+  };
+
   console.log({ todos });
   return (
     <section className={styles.home}>
       <h1 className={styles.heading}>TypeTodo</h1>
       <div className={styles.todos}>
         {todos.map((t) => (
-          <TodoComp key={t.id} todo={t} toggleTodo={toggleTodo} />
+          <SingleTodo key={t.id} todo={t} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
         ))}
       </div>
     </section>
