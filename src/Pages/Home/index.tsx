@@ -1,26 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import TodoInput from "../../Components/TodoInput";
 import SingleTodo from "../../Components/SingleTodo";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 import { Todo } from "../../types";
 import styles from "./home.module.css";
 
 export const Home: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([
-    {
-      id: "1",
-      text: "Blank todo lol",
-      completed: false,
-    },
-    {
-      id: "2",
-      text: "Done long ring long land todo lel",
-      completed: true,
-    },
-  ]);
+  const [todos, setTodos] = useLocalStorage<Todo[]>("localTodos", []);
 
   const toggleTodo = (todo: Todo): void => {
-    setTodos((dos) =>
-      dos.map((t) => {
+    setTodos(
+      todos.map((t) => {
         if (t.id !== todo.id) return t;
         return {
           ...t,
@@ -31,12 +21,12 @@ export const Home: React.FC = () => {
   };
 
   const deleteTodo = (todo: Todo): void => {
-    setTodos((dos) => dos.filter((t) => t.id !== todo.id));
+    setTodos(todos.filter((t) => t.id !== todo.id));
   };
 
   const addTodo = (text: string): void => {
-    setTodos((dos) => [
-      ...dos,
+    setTodos([
+      ...todos,
       {
         id: Date.now().toString(),
         text,
@@ -53,6 +43,8 @@ export const Home: React.FC = () => {
         <TodoInput addTodo={addTodo} />
       </header>
       <div className={styles.todos}>
+        {!todos.length && <h2 className={styles.sub}>You don't have any Todos yet</h2>}
+
         {todos.map((t) => (
           <SingleTodo key={t.id} todo={t} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
         ))}
