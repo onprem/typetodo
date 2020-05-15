@@ -13,7 +13,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({ state, onChange }) => {
       <input
         type="checkbox"
         className={styles.input}
-        defaultChecked={state}
+        checked={state}
         onChange={(e) => onChange(e.target.checked)}
       />
     </label>

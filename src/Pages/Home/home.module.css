@@ -7,11 +7,18 @@
 .home {
   composes: column;
   width: 100%;
-  box-sizing: border-box;
+}
+
+.top {
+  composes: column;
+  background: var(--colorBG-dark);
+  width: 100%;
   padding: 2em;
+  box-sizing: border-box;
 }
 
 .todos {
+  margin: 3em 0;
   composes: column;
   width: 80%;
 }
@@ -19,4 +26,10 @@
 .heading {
   font-size: 3em;
   margin: 1em 0;
+}
+
+@media (max-width: 500px) {
+  .todos {
+    width: 90%;
+  }
 }

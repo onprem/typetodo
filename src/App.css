@@ -11,5 +11,6 @@
 :root {
   --colorBG: #061f2f;
   --colorBG-light: #0e3046;
+  --colorBG-dark: #0a121b;
   --colorFG: white;
 }

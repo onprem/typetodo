@@ -8,6 +8,7 @@
   font-size: 1.2em;
   max-width: 1000px;
   margin: 0.5em 0;
+  box-sizing: border-box;
 }
 
 .left {
@@ -44,4 +45,11 @@
 
 .ico {
   height: 2em;
+}
+
+@media (max-width: 500px) {
+  .todo {
+    padding: 0.7em 1em;
+    font-size: 1em;
+  }
 }

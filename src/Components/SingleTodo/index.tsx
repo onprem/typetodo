@@ -16,7 +16,7 @@ const SingleTodo: FC<TodoProps> = ({ todo, toggleTodo, deleteTodo }) => {
   return (
     <div className={`${styles.todo} ${completed && styles.done}`}>
       <div className={styles.left}>
-        <Checkbox state={!completed} onChange={() => toggleTodo(todo)} />
+        <Checkbox state={completed} onChange={() => toggleTodo(todo)} />
         <p className={styles.text} onClick={() => toggleTodo(todo)}>
           {text}
         </p>

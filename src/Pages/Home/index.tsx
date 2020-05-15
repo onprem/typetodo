@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TodoInput from "../../Components/TodoInput";
 import SingleTodo from "../../Components/SingleTodo";
 import { Todo } from "../../types";
 import styles from "./home.module.css";
@@ -33,10 +34,24 @@ export const Home: React.FC = () => {
     setTodos((dos) => dos.filter((t) => t.id !== todo.id));
   };
 
+  const addTodo = (text: string): void => {
+    setTodos((dos) => [
+      ...dos,
+      {
+        id: Date.now().toString(),
+        text,
+        completed: false,
+      },
+    ]);
+  };
+
   console.log({ todos });
   return (
     <section className={styles.home}>
-      <h1 className={styles.heading}>TypeTodo</h1>
+      <header className={styles.top}>
+        <h1 className={styles.heading}>TypeTodo</h1>
+        <TodoInput addTodo={addTodo} />
+      </header>
       <div className={styles.todos}>
         {todos.map((t) => (
           <SingleTodo key={t.id} todo={t} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
