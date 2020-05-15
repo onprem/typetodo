@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Todo } from "../../types";
 import { ReactComponent as TrashIcon } from "../../Assets/icons/trash.svg";
 import styles from "./todo.module.css";
+import Checkbox from "../Checkbox";
 
 type TodoProps = {
   todo: Todo;
@@ -14,9 +15,12 @@ const SingleTodo: FC<TodoProps> = ({ todo, toggleTodo, deleteTodo }) => {
 
   return (
     <div className={`${styles.todo} ${completed && styles.done}`}>
-      <span className={styles.text} onClick={() => toggleTodo(todo)}>
-        {text}
-      </span>
+      <div className={styles.left}>
+        <Checkbox state={!completed} onChange={() => toggleTodo(todo)} />
+        <p className={styles.text} onClick={() => toggleTodo(todo)}>
+          {text}
+        </p>
+      </div>
       <button type="button" className={styles.delete} onClick={() => deleteTodo(todo)}>
         <TrashIcon className={styles.ico} />
       </button>

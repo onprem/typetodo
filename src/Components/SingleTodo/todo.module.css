@@ -10,8 +10,14 @@
   margin: 0.5em 0;
 }
 
+.left {
+  display: flex;
+  align-items: center;
+}
+
 .text {
   cursor: pointer;
+  margin-left: 1em;
 }
 
 .todo.done .text {
